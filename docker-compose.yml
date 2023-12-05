@@ -1,5 +1,9 @@
-app:
-  build: .
-  volumes:
-    - "$PWD:/usr/src/app"
-    - "$HOME:/home"
+version: '3.9'
+services:
+  python-app:
+    image: python:3.9
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: python test-notebook.py
+
