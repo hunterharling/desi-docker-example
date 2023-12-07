@@ -16,3 +16,12 @@ AWS_SECRET_ACCESS_KEY=your_secret_access_key
 sudo docker build -t desi-image .
 sudo docker run --env-file .env --name desi-container desi-image
 ```
+
+## Other useful commands
+
+To remove all images and containers (if the you have unused images/containers taking up space on the instance):
+
+```
+sudo docker rm -vf $(sudo docker ps -aq)
+sudo docker rmi -f $(sudo docker images -aq)
+```
