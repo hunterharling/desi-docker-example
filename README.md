@@ -20,7 +20,8 @@ sudo docker run --privileged -it --device /dev/fuse --cap-add SYS_ADMIN --env-fi
 You can now execute commands to the container, such as the commands to mount the s3 bucket:
 
 ```
-mount-s3 bucket-name ./s3
+mkdir /global
+mount-s3 bucket-name /global
 ```
 
 ## Other useful commands
