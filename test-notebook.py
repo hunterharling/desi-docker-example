@@ -110,7 +110,7 @@ from desitarget.sv3 import sv3_targetmask    # For SV3
 # Release directory path
 
 specprod = 'fuji'    # Internal name for the EDR
-specprod_dir = '/global/cfs/cdirs/desi/public/edr/spectro/redux/fuji/'
+specprod_dir = './s3/cfs/cdirs/desi/public/edr/spectro/redux/fuji'
 print(specprod_dir)
 
 

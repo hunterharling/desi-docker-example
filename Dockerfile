@@ -8,7 +8,15 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     libbz2-dev \
     git \
+    wget \
+    fuse \
+    libfuse2 \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Mountpoint for Amazon S3
+RUN wget https://s3.amazonaws.com/mountpoint-s3-release/latest/x86_64/mount-s3.deb \
+    && apt-get install -y ./mount-s3.deb \
+    && rm ./mount-s3.deb
 
 # Clone and install desiutil
 RUN git clone https://github.com/desihub/desiutil.git && \
@@ -43,12 +51,14 @@ RUN cd desispec && python setup.py install --prefix=/app/desispec
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-#RUN "sudo apt-get install libbz2-dev"
-
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install fitsio --upgrade --ignore-installed
 RUN pip install speclite
 RUN pip install numba
 
-CMD ["python", "./test-notebook.py"]
+# mountpoint
+RUN mkdir s3
+# RUN mount-s3 desi-us-east-2 ./s3
+
+#CMD ["python", "./test-retry.py"]
