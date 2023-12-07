@@ -31,3 +31,8 @@ To remove all images and containers (if the you have unused images/containers ta
 sudo docker rm -vf $(sudo docker ps -aq)
 sudo docker rmi -f $(sudo docker images -aq)
 ```
+
+## Useful documentation
+
+AWS Mountpoint:
+https://github.com/awslabs/mountpoint-s3
